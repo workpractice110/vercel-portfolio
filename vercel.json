@@ -5,6 +5,7 @@
       "src": "*.html",
       "use": "@vercel/static"
     }
+    
   ],
   "routes": [
     {
