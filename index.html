@@ -1,15 +1,244 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monu Dwivedi - Senior Software Engineer Portfolio</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; }
-        h1 { color: #333; }
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #007bff, #00c6ff);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+        }
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            animation: fadeIn 2s ease-in-out;
+        }
+        header p {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+        .contact-info {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+        }
+        section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h2 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        h2::after {
+            content: '';
+            width: 50px;
+            height: 3px;
+            background: #007bff;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        #about {
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+        }
+        #skills ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        #skills li {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        #skills li:hover {
+            transform: scale(1.1);
+        }
+        .experience-item {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 5px solid #007bff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+        .experience-item h3 {
+            margin: 0;
+            color: #007bff;
+        }
+        .experience-item p {
+            margin: 5px 0;
+        }
+        #education {
+            background: white;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        #contact {
+            text-align: center;
+        }
+        #contact a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 123, 255, 0.8);
+            padding: 10px 0;
+            text-align: center;
+            z-index: 1000;
+            transition: background 0.3s;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <h1>Welcome to My Portfolio</h1>
-    <p>If you can see this, your deployment is working!</p>
-    <p>Now we can add the server functionality.</p>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <header>
+        <h1>Monu Dwivedi</h1>
+        <p>Senior Software Engineer</p>
+        <div class="contact-info">
+            <p>Phone: (+91) 9831297110 | Email: <a href="mailto:monudwivedi91@gmail.com">monudwivedi91@gmail.com</a></p>
+            <p>Location: Hyderabad, INDIA | Experience: 9 Years 8 Months</p>
+        </div>
+    </header>
+    <section id="about">
+        <h2>Profile Summary</h2>
+        <p>IT Engg. Graduate looking for best career/opportunities in java development.</p>
+    </section>
+    <section id="skills">
+        <h2>Key Skills</h2>
+        <ul>
+            <li>MySQL</li>
+            <li>Oracle</li>
+            <li>Spring Boot</li>
+            <li>Microservices</li>
+            <li>Java</li>
+            <li>SQL</li>
+            <li>PLSQL</li>
+            <li>Apache Tomcat</li>
+            <li>Websphere</li>
+            <li>J2EE</li>
+            <li>Spring</li>
+            <li>Web Services</li>
+            <li>Rest Api</li>
+            <li>Websphere Mq</li>
+            <li>Core Java</li>
+            <li>Swift Messaging</li>
+            <li>MQ</li>
+            <li>HTML</li>
+        </ul>
+        <h2>Languages</h2>
+        <ul>
+            <li>Hindi</li>
+            <li>English</li>
+        </ul>
+    </section>
+    <section id="experience">
+        <h2>Work Experience</h2>
+        <div class="experience-item">
+            <h3>Senior Software Engineer</h3>
+            <p>Mashreq Global Services | 10/2021 - Present</p>
+            <p>I am responsible for managing team of developers and requirement gatherings. I also build microservices as per project needs.</p>
+        </div>
+        <div class="experience-item">
+            <h3>Software Engineer</h3>
+            <p>DBS Bank | 03/2019 - 10/2021</p>
+            <p>Software Developer working on cutting edge technologies in financial domain.</p>
+        </div>
+        <div class="experience-item">
+            <h3>Software Engineer</h3>
+            <p>Deloitte US India | 05/2017 - 03/2019</p>
+            <p></p> <!-- No description provided -->
+        </div>
+        <div class="experience-item">
+            <h3>Programmer Analyst</h3>
+            <p>Cognizant Technologies Solutions | 04/2015 - 03/2017</p>
+            <p>Developer</p>
+        </div>
+    </section>
+    <section id="education">
+        <h2>Education</h2>
+        <p>B.Tech/B.E. - Computers | 2014</p>
+        <p>Uttar Pradesh Technical University (UPTU) | Grade - 72%</p>
+    </section>
+    <section id="contact">
+        <h2>Contact & Social Links</h2>
+        <p>LinkedIn: <a href="https://linkedin.com/in/monudwivedi" target="_blank">linkedin.com/in/monudwivedi</a></p>
+    </section>
+    <footer>
+        <p>&copy; 2025 Monu Dwivedi. All rights reserved.</p>
+    </footer>
+    <script>
+        // Smooth scrolling for nav links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
