@@ -1,71 +1,60 @@
-import express, { type Request, Response, NextFunction } from "express";
-import { registerRoutes } from "./routes";
-import { setupVite, serveStatic, log } from "./vite";
+import express, { Request, Response } from 'express';
 
 const app = express();
+const port = process.env.PORT || 3000;
+
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 
-app.use((req, res, next) => {
-  const start = Date.now();
-  const path = req.path;
-  let capturedJsonResponse: Record<string, any> | undefined = undefined;
-
-  const originalResJson = res.json;
-  res.json = function (bodyJson, ...args) {
-    capturedJsonResponse = bodyJson;
-    return originalResJson.apply(res, [bodyJson, ...args]);
-  };
-
-  res.on("finish", () => {
-    const duration = Date.now() - start;
-    if (path.startsWith("/api")) {
-      let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
-      if (capturedJsonResponse) {
-        logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
-      }
-
-      if (logLine.length > 80) {
-        logLine = logLine.slice(0, 79) + "…";
-      }
-
-      log(logLine);
-    }
+// API route
+app.get('/api', (req: Request, res: Response) => {
+  res.json({ 
+    message: 'Hello from Express + TypeScript on Vercel!',
+    timestamp: new Date().toISOString()
   });
-
-  next();
 });
 
-// Export for Vercel serverless function
-const createServer = async () => {
-  const server = await registerRoutes(app);
-
-  app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
-    const status = err.status || err.statusCode || 500;
-    const message = err.message || "Internal Server Error";
-    res.status(status).json({ message });
-    throw err;
-  });
-
-  // In production on Vercel, we need to serve static files
-  if (process.env.NODE_ENV === 'production') {
-    serveStatic(app);
-  } else {
-    await setupVite(app, server);
-  }
-
-  return app;
-};
+// Serve a simple HTML page
+app.get('/', (req: Request, res: Response) => {
+  res.send(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>My Portfolio</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 40px; }
+            h1 { color: #333; }
+        </style>
+    </head>
+    <body>
+        <h1>Welcome to My Portfolio</h1>
+        <p>Express.js + TypeScript running on Vercel!</p>
+        <button onclick="fetchData()">Test API</button>
+        <div id="result"></div>
+        
+        <script>
+            async function fetchData() {
+                try {
+                    const response = await fetch('/api');
+                    const data = await response.json();
+                    document.getElementById('result').innerHTML = 
+                        'API Response: ' + JSON.stringify(data);
+                } catch (error) {
+                    document.getElementById('result').innerHTML = 
+                        'Error: ' + error.message;
+                }
+            }
+        </script>
+    </body>
+    </html>
+  `);
+});
 
 // Export for Vercel
-export default createServer;
+export default app;
 
-// Start server if not in Vercel environment
-if (!process.env.VERCEL) {
-  createServer().then((app) => {
-    const port = parseInt(process.env.PORT || '5000', 10);
-    app.listen(port, "0.0.0.0", () => {
-      log(`serving on port ${port}`);
-    });
+// Start server if running locally
+if (require.main === module) {
+  app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
   });
 }
