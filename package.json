@@ -2,19 +2,11 @@
   "name": "vercel-portfolio",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/server/index.js",
   "scripts": {
-    "dev": "ts-node server/index.ts",
-    "build": "tsc",
-    "start": "node dist/server/index.js",
-    "vercel-build": "npm run build"
+    "dev": "echo 'Development mode'",
+    "build": "echo 'Building...'"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/node": "^22.9.1",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.5.4"
-  }
+  "license": "ISC"
 }
